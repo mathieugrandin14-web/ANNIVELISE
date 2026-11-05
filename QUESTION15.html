@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 15 - Anniversaire d'Élise</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .reponse {
+            margin: 15px 0;
+        }
+
+        input {
+            width: 60%;
+            padding: 12px;
+            font-size: 18px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .etat {
+            font-weight: bold;
+            margin-left: 10px;
+            font-size: 18px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            background-color: #0078d4;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005ea6;
+        }
+
+        #resultatFinal {
+            margin-top: 25px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🎂 Question 15</h1>
+
+    <p>
+        <strong>
+            Devine les ingrédients de ce jus ?
+        </strong>
+    </p>
+
+    <p>
+        Aide : il y a un total de 4 ingrédients.<br>
+        Seuls deux ingrédients trouvés vous permettent de gagner un autocollant.
+    </p>
+
+    <div class="reponse">
+        <input type="text" id="rep1" placeholder="Ingrédient n°1">
+        <span id="etat1" class="etat"></span>
+    </div>
+
+    <div class="reponse">
+        <input type="text" id="rep2" placeholder="Ingrédient n°2">
+        <span id="etat2" class="etat"></span>
+    </div>
+
+    <button onclick="verifier()">Vérifier</button>
+
+    <div id="resultatFinal"></div>
+
+</div>
+
+<script>
+function verifier() {
+
+    const ingredientsValides = [
+        "goyave",
+        "citron",
+        "coco",
+        "noix de coco",
+        "spiruline"
+    ];
+
+    const rep1 = document.getElementById("rep1").value.trim().toLowerCase();
+    const rep2 = document.getElementById("rep2").value.trim().toLowerCase();
+
+    let score = 0;
+
+    const etat1 = document.getElementById("etat1");
+    if (ingredientsValides.includes(rep1)) {
+        etat1.innerHTML = "✅ VRAI";
+        etat1.style.color = "green";
+        score++;
+    } else {
+        etat1.innerHTML = "❌ FAUX";
+        etat1.style.color = "red";
+    }
+
+    const etat2 = document.getElementById("etat2");
+    if (ingredientsValides.includes(rep2)) {
+        etat2.innerHTML = "✅ VRAI";
+        etat2.style.color = "green";
+        score++;
+    } else {
+        etat2.innerHTML = "❌ FAUX";
+        etat2.style.color = "red";
+    }
+
+    const resultatFinal = document.getElementById("resultatFinal");
+
+    if (score >= 2) {
+        resultatFinal.innerHTML = "🎉 Bravo ! Vous avez gagné un autocollant !";
+        resultatFinal.style.color = "green";
+    } else {
+        resultatFinal.innerHTML = "❌ Il faut trouver au moins 2 ingrédients.";
+        resultatFinal.style.color = "red";
+    }
+}
+</script>
+
+</body>
+</html>
