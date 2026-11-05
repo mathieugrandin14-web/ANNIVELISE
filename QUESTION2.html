@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 2 - Anniversaire d'Élise</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .contenu {
+            padding-top: 150px;
+        }
+
+        .consigne {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        .mot-central {
+            font-size: 70px;
+            font-weight: bold;
+            color: #d32f2f;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .message {
+            margin-top: 30px;
+            font-size: 28px;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+
+        .espace {
+            height: 2500px;
+        }
+
+        .mot-cache {
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: bold;
+            color: green;
+            cursor: pointer;
+            user-select: none;
+            display: inline-block;
+            border: 3px solid green;
+            border-radius: 10px;
+            padding: 12px 25px;
+            background-color: #f0fff0;
+        }
+
+        .faux-gagne {
+            cursor: pointer;
+            text-decoration: underline;
+            color: inherit;
+        }
+
+        #messageBas {
+            margin-bottom: 100px;
+            font-size: 28px;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenu">
+
+        <h1>🎂 Question 2</h1>
+
+        <p class="consigne">
+            Clique sur le mot "gagné".
+        </p>
+
+        <div class="mot-central" onclick="perdu()">
+            PERDU
+        </div>
+
+        <div id="message" class="message"></div>
+
+    </div>
+
+    <div class="espace"></div>
+
+    <div class="mot-cache" onclick="premierGagne()">
+        GAGNÉ
+    </div>
+
+    <div id="messageBas"></div>
+
+    <script>
+
+        function perdu() {
+            document.getElementById("message").innerHTML = "❌ PERDU !";
+            document.getElementById("message").style.color = "red";
+        }
+
+        function premierGagne() {
+
+            document.getElementById("messageBas").innerHTML =
+                "❌ Faux ! Ce n'est toujours pas le bon bouton <span id='vraiBouton' class='faux-gagne'>GAGNÉ</span>";
+
+            document.getElementById("messageBas").style.color = "red";
+
+            document.getElementById("vraiBouton").onclick = function() {
+
+                document.getElementById("messageBas").innerHTML =
+                    "✅ FÉLICITATIONS ! TU PEUX PRENDRE UN AUTOCOLLANT !";
+
+                document.getElementById("messageBas").style.color = "green";
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            };
+
+        }
+
+    </script>
+
+</body>
+</html>
