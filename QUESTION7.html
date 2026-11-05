@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 7 - Anniversaire d'Élise</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            font-size: 18px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            background-color: #0078d4;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005ea6;
+        }
+
+        #resultat {
+            margin-top: 25px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🎂 Question 7</h1>
+
+    <p>
+        <strong>
+            Combien fait l'âge d'Élise moins l'âge de Mathieu plus l'âge de Kaya Miaou ?
+        </strong>
+    </p>
+
+    <input type="text" id="reponse" placeholder="Entrez votre réponse">
+
+    <br>
+
+    <button onclick="verifier()">Valider</button>
+
+    <div id="resultat"></div>
+
+</div>
+
+<script>
+function verifier() {
+
+    const saisie = document
+        .getElementById("reponse")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const reponsesValides = [
+        "16",
+        "16 ans"
+    ];
+
+    const resultat = document.getElementById("resultat");
+
+    if (reponsesValides.includes(saisie)) {
+        resultat.innerHTML = "✅ Bravo, vous avez gagné !";
+        resultat.style.color = "green";
+    } else {
+        resultat.innerHTML = "❌ Faux ! Recommencez.";
+        resultat.style.color = "red";
+    }
+}
+</script>
+
+</body>
+</html>
