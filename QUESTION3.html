@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 3 - Anniversaire d'Élise</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 25px;
+        }
+
+        .reponse {
+            margin: 15px 0;
+        }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            font-size: 18px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .etat {
+            display: block;
+            margin-top: 5px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            background-color: #0078d4;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005ea6;
+        }
+
+        #resultatFinal {
+            margin-top: 25px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🎂 Question 3</h1>
+
+    <p>
+        <strong>
+            Quel est le goût de chaque chips ?
+        </strong>
+        <br><br>
+        (Il faut deviner les 3 goûts pour gagner un autocollant !)
+    </p>
+
+    <div class="reponse">
+        <input type="text" id="rep1" placeholder="Goût n°1">
+        <span id="etat1" class="etat"></span>
+    </div>
+
+    <div class="reponse">
+        <input type="text" id="rep2" placeholder="Goût n°2">
+        <span id="etat2" class="etat"></span>
+    </div>
+
+    <div class="reponse">
+        <input type="text" id="rep3" placeholder="Goût n°3">
+        <span id="etat3" class="etat"></span>
+    </div>
+
+    <button onclick="verifier()">Vérifier</button>
+
+    <div id="resultatFinal"></div>
+
+</div>
+
+<script>
+
+function verifier() {
+
+    const reponsesValides = [
+        "camembert",
+        "bacon",
+        "bacon grillé",
+        "bacon grille",
+        "moutarde"
+    ];
+
+    let score = 0;
+
+    for(let i = 1; i <= 3; i++) {
+
+        const saisie = document
+            .getElementById("rep" + i)
+            .value
+            .trim()
+            .toLowerCase();
+
+        const etat = document.getElementById("etat" + i);
+
+        if(reponsesValides.includes(saisie)) {
+
+            etat.innerHTML = "✅ VRAI";
+            etat.style.color = "green";
+            score++;
+
+        } else {
+
+            etat.innerHTML = "❌ FAUX";
+            etat.style.color = "red";
+
+        }
+    }
+
+    const resultatFinal = document.getElementById("resultatFinal");
+
+    if(score === 3) {
+
+        resultatFinal.innerHTML =
+            "🎉 Bravo ! Vous avez trouvé les 3 goûts ! Vous gagnez un autocollant !";
+
+        resultatFinal.style.color = "green";
+
+    } else {
+
+        resultatFinal.innerHTML =
+            "❌ Il faut trouver les 3 goûts pour gagner l'autocollant.";
+
+        resultatFinal.style.color = "red";
+    }
+}
+
+</script>
+
+</body>
+</html>
